@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Notes</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+
+<body>
+    <header class="title-container">
+        <h1>GoldenShelf</h1>
+        <p>“A room without books is like a body without a soul.”</p>
+        <hr>
+    </header>
+
+    <div class="add-container">
+        <form action="/new" method="get">
+            <input type="submit" value="Add New Book" class="btn-add">
+        </form>
+    </div>
+
+    <div class="book-list-container">
+        <% if(locals.books) {%>
+            <% books.forEach(book => { 
+                const date = new Date(book.finished_date);
+                const formattedDate = `${date.getDate().toString().padStart(2, '0')}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getFullYear()}`;
+            %>
+                <div class="book-item">
+                    <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="Book Cover">
+                    <div class="book-info">
+                        <h3><%= book.title %></h3>
+                        <span class="book-meta">Date read: <%= formattedDate %> | Rating: <%= book.rating %>/10</span>
+                        <p><%= book.recency %></p>
+                        <form action="book/<%= book.id %>" method="get">
+                            <input type="submit" value="View Details" class="btn-view">
+                        </form>
+                    </div>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+
+    <footer>
+        <span style="padding-bottom: 20px; font-style: italic;"> © davinpwk 2024</span>
+    </footer>
+</body>
+</html>

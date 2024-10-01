@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+    <link rel="stylesheet" href="/book.css">
+</head>
+<body>
+    <div class="content-container">
+        <div class="title-container">
+            <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg" alt="Book Cover" class="book-cover">
+            <div class="book-info">
+                <h1 class="book-title"><%= book.title %></h1>
+                <span class="book-meta">Date read: <%= date %> | Rating: <%= book.rating %>/10</span>
+                <p class="book-recency"><%= book.recency %></p>
+            </div>
+        </div>
+        <hr>
+        <div class="notes-container">
+            <h2>Notes:</h2>
+            <p class="book-notes"><%= book.notes %></p>
+        </div>
+        <form action="/edit" method="get">
+            <input type="hidden" name="bookId" value="<%= book.id %>"> 
+            <input type="submit" value="Edit" class="btn-edit"> 
+        </form>
+        <form action="/delete" method="get">
+            <input type="hidden" name="bookId" value="<%= book.id %>"> 
+            <input type="submit" value="Delete" class="btn-edit"> 
+        </form>
+    </div>
+</body>
+</html>
