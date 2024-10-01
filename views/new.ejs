@@ -75,12 +75,10 @@
                 <div class="form-group">
                     <label for="rate">Rating</label>
                     <select name="rate" id="rate" required>
-                        <select name="rate" id="rate" required>
-                            <option value="" disabled>Select Rating</option>
-                            <% for (let i = 0; i <= 10; i++) { %>
-                                <option value="<%= i %>"><%= i %></option>
-                            <% } %>
-                        </select>
+                        <option value="" disabled>Select Rating</option>
+                        <% for (let i = 0; i <= 10; i++) { %>
+                            <option value="<%= i %>"><%= i %></option>
+                        <% } %>
                     </select>
                 </div>
 
